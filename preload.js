@@ -6,11 +6,11 @@ const mountainImage=new Image();
 const spriteSheetImage=new Image();
 const tilesetImage=new Image();
 function preload(){
-    castleImage.src="./marioda/assets/sprites/castle.png";
-    cloudsImage.src="./marioda/assets/sprites/clouds.png";
-    mountainImage.src="./marioda/assets/sprites/mountain.png";
-    spriteSheetImage.src="./marioda/assets/sprites/spritesheet.png";
-    tilesetImage.src="./marioda/assets/sprites/tileset_gutter.png";
+    castleImage.src="./assets/sprites/castle.png";
+    cloudsImage.src="./assets/sprites/clouds.png";
+    mountainImage.src="./assets/sprites/mountain.png";
+    spriteSheetImage.src="./assets/sprites/spritesheet.png";
+    tilesetImage.src="./assets/sprites/tileset_gutter.png";
 
     return new Promise(function(resolve,reject){
         let p1= new Promise(function(resolve,reject){
@@ -22,10 +22,10 @@ function preload(){
         let p2= new Promise(function(resolve,reject){
             cloudsImage.addEventListener("load",function(){
                 console.log("Image loaded");
-                resolve();
+                resolve(); 
             });
         })
-        let p3= new Promise(function(resolve,reject){
+        let p3= new Promise(function(resolve ,reject){
             mountainImage.addEventListener("load",function(){
                 console.log("Image loaded");
                 resolve();
