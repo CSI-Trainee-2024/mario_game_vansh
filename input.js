@@ -16,29 +16,32 @@ let input = {
     ,
     update(gameObj) {
         let mario = gameObj.entities.mario
-        //left 
-        if (this.isDown("ArrowLeft")) {
-            // go left
-            mario.posX -= mario.velX;
-            mario.currentDirection = "left";
-            mario.currentState = mario.states.walkingAnim;
+        if (gameObj.userControl == true) {
+            //left 
+            if (this.isDown("ArrowLeft")) {
+                // go left
+                mario.posX -= mario.velX;
+                mario.currentDirection = "left";
+                mario.currentState = mario.states.walkingAnim;
 
-        }
-        // right 
-        if (this.isDown("ArrowRight")) {
-            // go right
-            mario.posX += mario.velX;
-            mario.currentDirection = "right";
-            mario.currentState = mario.states.walkingAnim;
-        }
-        // space  
-        // console.log(mario.velY);
-        if (this.isPressed("Space")) {
-            if (mario.velY == 1.1) {
-                mario.velY -= 14;
-                mario.currentState = mario.states.jumpingAnim;
+            }
+            // right 
+            if (this.isDown("ArrowRight")) {
+                // go right
+                mario.posX += mario.velX;
+                mario.currentDirection = "right";
+                mario.currentState = mario.states.walkingAnim;
+            }
+            // space  
+            // console.log(mario.velY);
+            if (this.isPressed("Space")) {
+                if (mario.velY == 1.1) {
+                    mario.velY -= 14;
+                    mario.currentState = mario.states.jumpingAnim;
+                }
             }
         }
+
 
     }
     , isDown(key) {

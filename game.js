@@ -34,7 +34,9 @@ const render = {
         this.drawEntity(camera, mario, gameObj);
         gameObj.entities.goombas.forEach((goomba) => {
             this.drawEntity(camera, goomba, gameObj);
-
+        })
+        gameObj.entities.koopas.forEach((koopa) => {
+            this.drawEntity(camera, koopa, gameObj);
         })
 
 
@@ -88,16 +90,20 @@ class Game {
                     , animFrame: 0,
                     levelBuilder: new LevelBuilder(levelOne),
                     camera
-                    , reset: this.reset
+                    , reset: this.reset,
+                    userControl: true
 
                 }
                 tool.scale(2.74, 2.74);
                 let mario = new Mario(spriteSheetImage, 175, 0, 18, 18);
                 gameObj.entities.mario = mario;
                 gameObj.entities.goombas = [];
+                gameObj.entities.koopas = [];
                 levelOne.goombas.forEach((gCord) => {
                     gameObj.entities.goombas.push(new Goomba(spriteSheetImage, gCord[0], gCord[1], gCord[2], gCord[3]));
-
+                })
+                levelOne.koopas.forEach((kCord) => {
+                    gameObj.entities.koopas.push(new Koopa(spriteSheetImage, kCord[0], kCord[1], kCord[2], kCord[3]));
                 })
                 // console.log(gameObj.entities.goombas);
                 gameObj.entities.scenery = [];
