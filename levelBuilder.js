@@ -2,7 +2,8 @@ class LevelBuilder {
 
   constructor(level) {
     this.sceneryEntities = [];
-
+    this.bricks = [];
+    this.blocks = [];
     level.ground.forEach((gCord) => {
 
       this.sceneryEntities.push(
@@ -45,10 +46,19 @@ class LevelBuilder {
           cloudsImage, largeCloud[0], largeCloud[1], largeCloud[2], largeCloud[3],
         ));
     });
-    level.stairs.forEach((brick) => {
+    level.stairs.forEach((stair) => {
       this.sceneryEntities.push(
-        new Stair(tilesetImage, brick[0], brick[1], brick[2], brick[3]));
+        new Stair(tilesetImage, stair[0], stair[1], stair[2], stair[3]));
     });
+    level.bricks.forEach((brick) => {
+      this.bricks.push(new Brick(tilesetImage, brick[0], brick[1], brick[2], brick[3]));
+    })
+    level.coins.forEach((coin) => {
+      this.blocks.push(new Block("coin", tilesetImage, coin[0], coin[1], coin[2], coin[3]))
+    })
+    level.mushrooms.forEach((mushroom) => {
+      this.blocks.push(new Block("mushroom", tilesetImage, mushroom[0], mushroom[1], mushroom[2], mushroom[3]))
+    })
     // single entites
     this.sceneryEntities.push(
       new Flag(tilesetImage, level.flag[0], level.flag[1], level.flag[2], level.flag[3]),
@@ -67,30 +77,42 @@ class LevelBuilder {
     this.sceneryEntities.forEach((entity) => {
       gameObj.entities.scenery.push(entity);
     })
+    this.bricks.forEach((entity) => {
+      gameObj.entities.bricks.push(entity);
+    })
+    this.blocks.forEach((block) => {
+      gameObj.entities.blocks.push(block);
+    })
   }
   render(gameObj) {
     let camera = gameObj.camera;
-
     gameObj.entities.scenery.forEach((entity) => {
-      // console.log(entity)
-      let entityEnd = entity.posX + entity.width;
-      let frameWidth = camera.start + camera.width;
-      if (entity.posX >= camera.start && entityEnd <= frameWidth) {
-        gameObj.tool.drawImage(
-          entity.sprite.img
-          , entity.sprite.srcX
-          , entity.sprite.srcY,
-          entity.sprite.srcW,
-          entity.sprite.srcH,
-          entity.posX - camera.start,
-          entity.posY,
-          entity.width,
-          entity.height
-        )
-      }
-
-
+      // console.log(entity);
+      this.drawEntity(entity, camera, gameObj);
     })
-
+    gameObj.entities.bricks.forEach((brick) => {
+      // console.log(entity);
+      this.drawEntity(brick, camera, gameObj);
+    })
+    gameObj.entities.blocks.forEach((block) => {
+      this.drawEntity(block, camera, gameObj);
+    })
+  }
+  drawEntity(entity, camera, gameObj) {
+    let entityEnd = entity.posX + entity.width;
+    let frameWidth = camera.start + camera.width;
+    if (entity.posX >= camera.start && entityEnd <= frameWidth) {
+      gameObj.tool.drawImage(
+        entity.sprite.img
+        , entity.sprite.srcX
+        , entity.sprite.srcY,
+        entity.sprite.srcW,
+        entity.sprite.srcH,
+        entity.posX - camera.start,
+        entity.posY,
+        entity.width,
+        entity.height
+      )
+    }
   }
 }

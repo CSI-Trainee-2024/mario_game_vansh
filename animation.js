@@ -9,5 +9,11 @@ let animation = {
         gameObj.entities.koopas.forEach((koopa) => {
             koopa.currentState.animation(gameObj);
         })
+        gameObj.entities.blocks.forEach((block) => {
+            block.currentState(gameObj);
+        })
+        gameObj.entities.coins.forEach((coin) => {
+            coin.currentState.animation(gameObj);
+        })
     }
 }
