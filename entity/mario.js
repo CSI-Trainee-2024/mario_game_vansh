@@ -14,7 +14,6 @@ class Mario extends Entity {
           new Sprite(spritesheet, 667, 5, 16, 16),
           new Sprite(spritesheet, 683, 5, 16, 16),
           new Sprite(spritesheet, 699, 5, 16, 16),
-          new Sprite(spritesheet, 715, 5, 16, 16)
         ],
         counter: 0
 
@@ -24,7 +23,6 @@ class Mario extends Entity {
           new Sprite(spritesheet, 844, 21, 16, 16),
           new Sprite(spritesheet, 828, 21, 16, 16),
           new Sprite(spritesheet, 812, 21, 16, 16),
-          new Sprite(spritesheet, 796, 21, 16, 16),
         ],
         counter: 0
       },
@@ -41,7 +39,7 @@ class Mario extends Entity {
           if (gameObj.animFrame % 6 == 0) {
             self.sprite = self.animFrame.walkLeft.frames[self.animFrame.walkLeft.counter];
             self.animFrame.walkLeft.counter++;
-            if (self.animFrame.walkLeft.counter > 3) {
+            if (self.animFrame.walkLeft.counter > 2) {
               self.animFrame.walkLeft.counter = 0;
             }
           }
@@ -49,7 +47,7 @@ class Mario extends Entity {
           if (gameObj.animFrame % 6 == 0) {
             self.sprite = self.animFrame.walkRight.frames[self.animFrame.walkRight.counter];
             self.animFrame.walkRight.counter++;
-            if (self.animFrame.walkRight.counter > 3) {
+            if (self.animFrame.walkRight.counter > 2) {
               self.animFrame.walkRight.counter = 0;
             }
           }

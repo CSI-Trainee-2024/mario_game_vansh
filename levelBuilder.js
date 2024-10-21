@@ -9,9 +9,25 @@ class LevelBuilder {
       this.sceneryEntities.push(
 
         new Ground(tilesetImage, gCord[0], gCord[1], gCord[2], gCord[3])
+  
+      )
+      this.sceneryEntities.push(
+
+        new Ground(tilesetImage, gCord[0], 208, gCord[2], gCord[3])
+  
+      )
+      this.sceneryEntities.push(
+
+        new Ground(tilesetImage, gCord[0], 224, gCord[2], gCord[3])
+  
       )
     })
 
+    level.startscreen.forEach((ss) => {
+      this.sceneryEntities.push(
+        new Startscreen(startscreen, ss[0], ss[1], ss[2], ss[3]),
+      );
+    });
     level.shrubs.forEach((shrub) => {
       this.sceneryEntities.push(
         new Shrub(tilesetImage, shrub[0], shrub[1], shrub[2], shrub[3]),

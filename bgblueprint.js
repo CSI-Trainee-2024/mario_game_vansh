@@ -6,6 +6,13 @@ class Ground extends Entity {
     super(img, "ground", posX, posY, width, height);
   }
 }
+class Startscreen extends Entity {
+  constructor(startscreen, posX, posY, width, height) {
+    // pomle pixel
+    let img = new Sprite(startscreen, 0, 0, 352, 208);
+    super(img, "startscreen", posX, posY, width, height);
+  }
+}
 class Pipe extends Entity {
   constructor(tileset, xPos, yPos, width, height) {
     const sprite = new Sprite(tileset, 0, 180, 35, 35);

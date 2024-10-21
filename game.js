@@ -3,8 +3,9 @@
 const render = {
     init(gameObj) {
         // drawSky
-        gameObj.tool.fillStyle = "#3498db";
+        gameObj.tool.fillStyle = "#22a6b3";
         gameObj.tool.fillRect(0, 0, window.innerWidth, window.innerHeight);
+        // gameObj.tool.fillRect(startscreen, 40, 40, 200, 150);
         // gameObj.tool.drawImage(castleImage, 40,40,200,150);
         let mario = gameObj.entities.mario;
         gameObj.levelBuilder.stock(gameObj);

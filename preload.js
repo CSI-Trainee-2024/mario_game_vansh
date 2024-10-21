@@ -5,12 +5,14 @@ const cloudsImage=new Image();
 const mountainImage=new Image();
 const spriteSheetImage=new Image();
 const tilesetImage=new Image();
+const startscreen=new Image();
 function preload(){
     castleImage.src="./assets/sprites/castle.png";
     cloudsImage.src="./assets/sprites/clouds.png";
     mountainImage.src="./assets/sprites/mountain.png";
     spriteSheetImage.src="./assets/sprites/spritesheet.png";
     tilesetImage.src="./assets/sprites/tileset_gutter.png";
+    startscreen.src="./assets/sprites/start_screen.png";
 
     return new Promise(function(resolve,reject){
         let p1= new Promise(function(resolve,reject){
@@ -43,7 +45,13 @@ function preload(){
                 resolve();
             });
         })
-        let BigPromise=Promise.all([p1,p2,p3,p4,p5]);
+        let p6= new Promise(function(resolve,reject){
+            startscreen.addEventListener("load",function(){
+                console.log("Image loaded");
+                resolve();
+            });
+        })
+        let BigPromise=Promise.all([p1,p2,p3,p4,p5,p6]);
         BigPromise.then(function(){
             resolve();
         })
